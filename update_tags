@@ -1,0 +1,2 @@
+#!/bin/bash
+ctags -e scheme.py scheme_primitives.py scheme_reader.py scheme_test.py scheme_tokens.py

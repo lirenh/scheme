@@ -1,0 +1,181 @@
+
+scheme.py,2513
+def scheme_eval(expr, env, _=None): # Optional third argument is ignoredscheme_eval11,193
+def self_evaluating(expr):self_evaluating43,1353
+def scheme_apply(procedure, args, env):scheme_apply47,1502
+def eval_all(expressions, env):eval_all58,2074
+def apply_primitive(procedure, args_scheme_list, env):apply_primitive71,2523
+def make_call_frame(procedure, args, env):make_call_frame90,3149
+class Frame:Frame104,3565
+    def __init__(self, parent):__init__107,3649
+    def __repr__(self):__repr__112,3841
+    def lookup(self, symbol):lookup119,4106
+    def make_child_frame(self, formals, vals):make_child_frame129,4513
+    def define(self, symbol, value):define156,5793
+class UserDefinedProcedure:UserDefinedProcedure161,5981
+class LambdaProcedure(UserDefinedProcedure):LambdaProcedure164,6058
+    def __init__(self, formals, body, env):__init__167,6175
+    def __str__(self):__str__176,6490
+    def __repr__(self):__repr__179,6580
+def do_define_form(expressions, env):do_define_form187,6766
+def do_quote_form(expressions, env):do_quote_form209,7762
+def do_begin_form(expressions, env):do_begin_form215,7922
+def do_lambda_form(expressions, env):do_lambda_form220,8060
+def do_if_form(expressions, env):do_if_form228,8444
+def do_and_form(expressions, env):do_and_form239,8785
+def do_or_form(expressions, env):do_or_form250,9078
+def do_cond_form(expressions, env):do_cond_form261,9368
+def do_let_form(expressions, env):do_let_form282,10076
+def make_let_frame(bindings, env):make_let_frame288,10276
+SPECIAL_FORMS = {SPECIAL_FORMS301,10761
+def check_form(expr, min, max=float('inf')):check_form315,11081
+def check_formals(formals):check_formals326,11562
+class MuProcedure(UserDefinedProcedure):MuProcedure350,12333
+    def __init__(self, formals, body):__init__362,12668
+    def __str__(self):__str__369,12897
+    def __repr__(self):__repr__372,12983
+def do_mu_form(expressions, env):do_mu_form376,13082
+class Evaluate:Evaluate390,13407
+    def __init__(self, expr, env):__init__392,13488
+def scheme_optimized_eval(expr, env, tail=False):scheme_optimized_eval396,13572
+def read_eval_print_loop(next_line, env, interactive=False, quiet=False,read_eval_print_loop434,14850
+def scheme_load(*args):scheme_load467,16135
+    def next_line():next_line484,16866
+def scheme_open(filename):scheme_open490,16994
+def create_global_frame():create_global_frame503,17417
+def run(*argv):run513,17780
+            def next_line():next_line532,18440
+
+scheme_primitives.py,4019
+class SchemeError(Exception):SchemeError14,271
+class okay:okay17,363
+    def __repr__(self):__repr__19,415
+okay = okay() # Assignment hides the okay class; there is only one instanceokay22,462
+class PrimitiveProcedure:PrimitiveProcedure28,615
+    def __init__(self, fn, use_env=False, name='primitive'):__init__31,701
+    def __str__(self):__str__36,995
+_PRIMITIVES = []_PRIMITIVES39,1060
+def primitive(*names):primitive41,1078
+    def add(fn):add43,1181
+def add_primitives(frame):add_primitives50,1391
+def check_type(val, predicate, k, name):check_type55,1561
+def scheme_booleanp(x): #x是boolean类型就返回Truescheme_booleanp64,1923
+def scheme_true(val):scheme_true67,2015
+def scheme_false(val):scheme_false71,2120
+def scheme_not(x):scheme_not76,2227
+def scheme_eqp(x, y):scheme_eqp80,2305
+def scheme_pairp(x):scheme_pairp84,2366
+def scheme_nullp(x):scheme_nullp88,2439
+def scheme_listp(x):scheme_listp92,2501
+def scheme_length(x):scheme_length101,2735
+def scheme_cons(x, y):scheme_cons108,2874
+def scheme_car(x):scheme_car112,2938
+def scheme_cdr(x):scheme_cdr117,3037
+def scheme_list(*vals):scheme_list123,3139
+def scheme_append(*vals):scheme_append130,3282
+def scheme_stringp(x):scheme_stringp148,3784
+def scheme_symbolp(x):scheme_symbolp152,3882
+def scheme_numberp(x):scheme_numberp156,3984
+def scheme_integerp(x):scheme_integerp160,4097
+def _check_nums(*vals):_check_nums163,4193
+def _arith(fn, init, vals):_arith170,4443
+def scheme_add(*vals):scheme_add182,4774
+def scheme_sub(val0, *vals):scheme_sub186,4855
+def scheme_mul(*vals):scheme_mul193,5043
+def scheme_div(val0, *vals):scheme_div197,5124
+def scheme_expt(val0, val1):scheme_expt207,5411
+def scheme_abs(val0):scheme_abs212,5514
+def scheme_quo(val0, val1):scheme_quo216,5581
+def scheme_modulo(val0, val1):scheme_modulo224,5768
+def scheme_remainder(val0, val1):scheme_remainder232,5956
+def number_fn(module, name):number_fn242,6228
+    def scheme_fn(*vals):scheme_fn245,6369
+def _numcomp(op, x, y):_numcomp257,6844
+def scheme_eq(x, y):scheme_eq262,6927
+def scheme_lt(x, y):scheme_lt266,7004
+def scheme_gt(x, y):scheme_gt270,7081
+def scheme_le(x, y):scheme_le274,7159
+def scheme_ge(x, y):scheme_ge278,7237
+def scheme_evenp(x):scheme_evenp282,7318
+def scheme_oddp(x):scheme_oddp287,7400
+def scheme_zerop(x):scheme_zerop292,7482
+def scheme_atomp(x):scheme_atomp301,7588
+def scheme_display(val):scheme_display314,7852
+def scheme_print(val):scheme_print321,7994
+def scheme_newline():scheme_newline326,8076
+def scheme_error(msg=None):scheme_error332,8170
+def scheme_exit():scheme_exit337,8287
+_turtle_screen_on = False_turtle_screen_on344,8367
+def turtle_screen_on():turtle_screen_on346,8394
+def _tscheme_prep():_tscheme_prep349,8448
+def tscheme_forward(n):tscheme_forward357,8657
+def tscheme_backward(n):tscheme_backward365,8873
+def tscheme_left(n):tscheme_left374,9112
+def tscheme_right(n):tscheme_right382,9300
+def tscheme_circle(r, extent=None):tscheme_circle390,9478
+def tscheme_setposition(x, y):tscheme_setposition405,10044
+def tscheme_setheading(h):tscheme_setheading413,10257
+def tscheme_penup():tscheme_penup421,10463
+def tscheme_pendown():tscheme_pendown428,10627
+def tscheme_showturtle():tscheme_showturtle435,10799
+def tscheme_hideturtle():tscheme_hideturtle442,10948
+def tscheme_clear():tscheme_clear449,11086
+def tscheme_color(c):tscheme_color456,11242
+def tscheme_rgb(red, green, blue):tscheme_rgb465,11520
+def tscheme_begin_fill():tscheme_begin_fill475,11892
+def tscheme_end_fill():tscheme_end_fill482,12073
+def tscheme_bgcolor(c):tscheme_bgcolor489,12231
+def tscheme_exitonclick():tscheme_exitonclick496,12394
+def tscheme_speed(s):tscheme_speed506,12710
+def tscheme_pixel(x, y, c):tscheme_pixel516,13049
+def tscheme_pixelsize(size):tscheme_pixelsize536,13858
+def tscheme_screen_width():tscheme_screen_width544,14105
+def tscheme_screen_width():tscheme_screen_width549,14294
+
+scheme_reader.py,1019
+class Pair:Pair24,767
+    def __init__(self, first, second):__init__41,1169
+    def __repr__(self):__repr__45,1265
+    def __str__(self):__str__48,1366
+    def __len__(self):__len__58,1659
+    def __getitem__(self, k):  #you ignored this method at first. You should always keep DS in mind.__getitem__67,1924
+    def __eq__(self, p):__eq__79,2386
+    def map(self, fn):map84,2538
+class nil:nil92,2849
+    def __repr__(self):__repr__95,2886
+    def __str__(self):__str__98,2932
+    def __len__(self):__len__101,2976
+    def __getitem__(self, k):__getitem__104,3017
+    def map(self, fn):map109,3176
+nil = nil() # Assignment hides the nil class; there is only one instancenil112,3220
+def scheme_read(src):scheme_read117,3317
+def read_tail(src):read_tail144,4241
+def buffer_input(prompt="scm> "):buffer_input187,5697
+def buffer_lines(lines, prompt="scm> ", show_prompt=False):buffer_lines191,5852
+def read_line(line):read_line199,6126
+def read_print_loop():read_print_loop206,6289
+
+scheme_test.py,392
+def summarize(output, expected_output):summarize22,590
+    def failed(expected, actual, line):failed26,732
+EXPECT_STRING = '; expect'EXPECT_STRING41,1326
+class TestReader:TestReader43,1354
+    def __init__(self, lines, stdout):__init__45,1452
+    def __iter__(self):__iter__53,1666
+def run_tests(src_file='tests.scm'):run_tests71,2411
+        def next_line():next_line78,2748
+
+scheme_tokens.py,771
+_NUMERAL_STARTS = set(string.digits) | set('+-.')_NUMERAL_STARTS20,593
+_SYMBOL_CHARS = (set('!$%&*/:<=>?@^_~') | set(string.ascii_lowercase) |_SYMBOL_CHARS21,643
+_STRING_DELIMS = set('"')_STRING_DELIMS23,779
+_WHITESPACE = set(' \t\n\r')_WHITESPACE24,805
+_SINGLE_CHAR_TOKENS = set("()[]'`")_SINGLE_CHAR_TOKENS25,834
+_TOKEN_END = _WHITESPACE | _SINGLE_CHAR_TOKENS | _STRING_DELIMS | {',', ',@'}_TOKEN_END26,870
+DELIMITERS = _SINGLE_CHAR_TOKENS | {'.', ',', ',@'}DELIMITERS27,948
+def valid_symbol(s):valid_symbol29,1001
+def next_candidate_token(line, k):next_candidate_token38,1209
+def tokenize_line(line):tokenize_line76,2779
+def tokenize_lines(input):tokenize_lines115,4247
+def count_tokens(input):count_tokens120,4410
+def run(*args):run126,4631
